@@ -17,14 +17,14 @@ title('Histogram of Random Values from F Distribution');
 %% use this for alpha power
 clearvars
 rng(123)
-num_samples = 100; % Number of random samples
+num_samples = 100; % Number of participants
 % generate power distrib
 pow_F=random('F', 10, 20, num_samples, 1)+.5; % power distribution
 % assume same effect L&R
 mean_eff=0.1;
 sd_eff=2*mean_eff;
 att_eff=random("normal",mean_eff,sd_eff,num_samples,1);
-% the expected effect (Cohen's d) is then mean_eff/sd_eff
+% in this case, the expected effect (Cohen's d) is given by mean_eff/sd_eff
 
 HemiLCueR = pow_F+(rand(num_samples,1)-.5)*.2; % power distribution + noise
 HemiLCueL = HemiLCueR+att_eff; % ign vis field = higher power
@@ -41,9 +41,11 @@ hemiAMI      =[(HemiLCueL-HemiLCueR)./(HemiLCueL+HemiLCueR),...
                (HemiRCueR-HemiRCueL)./(HemiRCueR+HemiRCueL)];
 
 meanEffectSize(hemiSimpleEff(:,1),0,Effect="cohen")
-meanEffectSize(hemiSimpleEff(:,2),0,Effect="cohen")
+%meanEffectSize(hemiSimpleEff(:,2),0,Effect="cohen")
 meanEffectSize(hemiAMI(:,1),0,Effect="cohen")
-meanEffectSize(hemiAMI(:,2),0,Effect="cohen")
+%meanEffectSize(hemiAMI(:,2),0,Effect="cohen")
+
+% observations
 % 1) differs between measures - normalised smaller(?)
 % 2) noise inflation by normalisation?
 % (could run simulation to check/quantify)
