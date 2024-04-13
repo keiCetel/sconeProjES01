@@ -17,12 +17,12 @@ random_values2 = random('F', 10, 20, num_samples, 1)*1.2;
 %% use this for alpha power
 clearvars
 
-permNo = 100; % number of "studies"
+permNo = 1000; % number of "studies"
 
 rng(123) % to produce replicable results
-num_samples = 100; % Number of participants per study
+num_samples = 50; % Number of participants per study
 
-% all the effect sizes with different measures
+% all the effect sizes with different measures - pre-allocate
 t_sim_ES = zeros(permNo,1);
 t_AMI_ES = zeros(permNo,1);
 F_ES = zeros(permNo,1);
